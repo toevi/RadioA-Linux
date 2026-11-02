@@ -27,7 +27,7 @@ Every release carries `SHA256SUMS`, its signature `SHA256SUMS.gpg` and the publi
 Key: `tmfgroup <tomek.maselko@gmail.com>`, fingerprint:
 
 ```
-[TO FILL IN: fingerprint, after the key is created]
+7B94 EDA6 999D F3F0 E34A  7D3C 8548 DB28 19D9 7E04
 ```
 
 ```sh
