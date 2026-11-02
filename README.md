@@ -6,7 +6,13 @@ look called **Vintage**. Free, no account, no ads.
 
 ## Get it
 
-Download from **[Releases](../../releases/latest)**. A copy from anywhere else may have been altered.
+| Platform | Where |
+|---|---|
+| **Linux** (amd64, `.deb`) | [![Download from GitHub Releases](https://img.shields.io/badge/GitHub_Releases-download_.deb-2E9E5B?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/toevi/RadioA-Linux/releases/latest) |
+| **Windows 11** (x64) — RadioA for Windows | [![Get it from the Microsoft Store](https://img.shields.io/badge/Microsoft_Store-get_it-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)](https://apps.microsoft.com/detail/9NJPCB908XPS) |
+| **Android** (phone, tablet, Android Auto) | [![Get it on Google Play](https://img.shields.io/badge/Google_Play-get_it-34A853?style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.tmfgroup.radioandroid) |
+
+The Linux app is distributed **only through this project's Releases page**. A copy from anywhere else may have been altered.
 
 Website: <https://toevi.github.io/RadioA-Linux/>
 
@@ -39,13 +45,6 @@ sha256sum -c SHA256SUMS --ignore-missing               # must say "OK"
 
 The fingerprint on this page and on the website is what ties the key to this project. A key file alone proves
 nothing: anyone could make one under this name.
-
-### Other platforms
-
-| Platform | Where |
-|---|---|
-| **Windows 11** | [Microsoft Store](https://apps.microsoft.com/detail/9NJPCB908XPS) |
-| **Android** (phone, tablet, Android Auto) | [Google Play](https://play.google.com/store/apps/details?id=com.tmfgroup.radioandroid) |
 
 ## Screenshots
 
