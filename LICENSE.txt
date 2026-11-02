@@ -1,0 +1,127 @@
+RadioA for Linux - END USER LICENSE AGREEMENT
+
+Version: 1.0 DRAFT (2026-11-02) - not yet approved
+Licensor: Tomasz Masłowski (toevi), contact: tomek.maselko@gmail.com
+
+PLEASE READ THIS AGREEMENT CAREFULLY. By installing or using the Software you accept it.
+If you do not accept it, do not install or use the Software.
+
+
+1. WHAT THIS AGREEMENT COVERS
+
+This agreement applies to "RadioA for Linux" (the "Software"): the application package
+and its files, except the third-party components listed in section 6, which are provided
+under their own licenses.
+
+
+2. LICENSE GRANT
+
+The Software is free of charge. The Licensor grants you a non-exclusive,
+non-transferable, revocable license to install and use the Software for your private
+use on computers you own or control.
+
+
+3. WHAT YOU MAY NOT DO
+
+Except where section 6 or mandatory law allows it, you may not:
+  a) sell the Software, or charge any fee for it or for access to it; distribute,
+     publish, rent or lend it; the only authorised source is the Releases page of
+     https://github.com/toevi/RadioA-Linux, linked from the project page
+     (https://toevi.github.io/RadioA-Linux/);
+  b) modify, decompile or reverse engineer the Software, or create derivative works;
+  c) remove or alter copyright, license or attribution notices.
+
+
+4. OWNERSHIP
+
+The Software is licensed, not sold. All rights not expressly granted remain with the
+Licensor. The names "RadioA" and "RadioA for Linux" belong to the Licensor.
+
+
+5. RADIO STATIONS AND THIRD-PARTY SERVICES
+
+The Software is a player and hosts no radio station of its own. On first start it adds a
+few example stations (SomaFM channels and France Musique), whose broadcasters make these
+streams publicly available; you may delete them. All other stations you add yourself, and
+you are responsible for what you listen to and for respecting copyright and broadcasting
+rules in your country. Station servers and the online services the Software uses to show
+cover art and logos (Apple iTunes Search, Deezer, radio-browser.info, Wikimedia,
+AudioAddict) are operated by third parties under their own terms. They may change, stop
+working or become unavailable at any time.
+
+
+6. THIRD-PARTY COMPONENTS
+
+The Software includes components from other authors. Each is provided under its own
+license, and nothing in this agreement limits the rights those licenses give you:
+
+  - LibVLCSharp - GNU Lesser General Public License 2.1 or later (LGPL). Source code:
+    https://code.videolan.org/videolan/LibVLCSharp.
+  - .NET runtime, Avalonia UI, Tmds.DBus.Protocol - MIT license.
+  - SkiaSharp, HarfBuzzSharp - MIT license, with BSD-style native libraries.
+  - Material Icons - Apache License 2.0.
+  - Inter font, Doto font - SIL Open Font License 1.1.
+
+LibVLC and its plugins (LGPL) are not part of the Software: your system installs them from
+its own repositories as package dependencies, under their own licenses.
+
+For the LGPL components you are expressly allowed to modify them, to replace the LGPL
+libraries used by the Software with modified versions, and to reverse engineer the
+Software only to the extent needed to debug such modifications. Section 3 does not apply
+to that. The license texts are in /usr/share/doc/radioa after installation and in
+THIRD-PARTY-NOTICES.txt on the project's repository.
+
+
+7. PRIVACY
+
+The Software collects no personal data and has no accounts, advertising or analytics.
+What it stores on your computer and which servers it contacts is described in the
+Privacy Policy: https://github.com/toevi/RadioA-Linux/blob/master/PRIVACY.md
+
+
+8. UPDATES
+
+The Software does not update itself. New versions are published on the Releases page named
+in section 3. A new version may come with a new version of this agreement, which then
+applies to that version.
+
+
+9. NO WARRANTY
+
+The Software is provided free of charge "AS IS", without warranty of any kind, express
+or implied, including fitness for a particular purpose, uninterrupted playback or
+availability of any station or online service, to the extent permitted by law.
+
+
+10. LIMITATION OF LIABILITY
+
+To the extent permitted by law, the Licensor is not liable for any indirect, incidental
+or consequential damage, loss of data or profit arising from the use of, or inability to
+use, the Software. Nothing in this agreement excludes liability that cannot be excluded
+by law, including liability for damage caused intentionally, and nothing limits the
+statutory rights of consumers.
+
+
+11. TERMINATION
+
+This license ends automatically if you break this agreement. You may end it at any time
+by uninstalling the Software.
+
+
+12. APPLICABLE LAW
+
+This agreement is governed by the law of the Republic of Poland. If you are a consumer,
+you keep the protection of the mandatory laws of the country where you live.
+Any dispute goes to the court that has jurisdiction under the applicable law; a consumer
+may always bring proceedings in the country where they live.
+
+
+13. LANGUAGE
+
+This agreement is written in English. Any translation is provided for convenience only;
+if it differs from the English version, the English version prevails.
+
+
+14. CONTACT
+
+Tomasz Masłowski - tomek.maselko@gmail.com

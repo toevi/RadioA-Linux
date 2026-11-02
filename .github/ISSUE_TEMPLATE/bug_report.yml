@@ -1,0 +1,37 @@
+name: Something does not work
+description: A station will not play, the app misbehaves, the package will not install…
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. A short, concrete report is the most useful one.
+        **Do not paste anything private** — this page is public.
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: "`apt policy radioa` shows it, in the line Installed."
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: System and desktop
+      description: "`lsb_release -ds` and your desktop environment."
+      placeholder: "Linux Mint 22.3, Cinnamon"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, and what happened instead. A screenshot helps.
+    validations:
+      required: true
+  - type: input
+    id: station
+    attributes:
+      label: Station (if it is about playback)
+      description: The station's name and its stream address, if you are happy to share them.

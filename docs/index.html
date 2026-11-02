@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RadioA for Linux — Internet Radio for the Desktop</title>
+<meta name="description" content="RadioA for Linux — internet radio for Debian-based systems: LibVLC engine, 10-band equalizer, ICY metadata and cover art, MPRIS media keys and a tray icon. Free .deb package, amd64."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:     #070b12;
+  --bg2:    #0a101a;
+  --bg3:    #0e1622;
+  --bg4:    #121d2c;
+  --accent: #7bd88f;          /* accent */
+  --accent2:#2e9e5b;          /* accent, dark */
+  --border: rgba(255,255,255,0.07);
+  --text:   #dfe6ef;
+  --muted:  #6b7b8f;
+  --mono:   'IBM Plex Mono', monospace;
+  --sans:   'IBM Plex Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(7,11,18,0.88); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 24px; flex-wrap: wrap; gap: 10px;
+}
+.nav-logo { font-family: var(--mono); font-weight: 700; color: #fff; font-size: 14px; letter-spacing: -0.3px; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.nav-links a { font-family: var(--mono); font-size: 12px; color: #9fb0c4; text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+.hero {
+  border-bottom: 1px solid rgba(123,216,143,0.18);
+  padding: 56px 28px 60px; text-align: center; position: relative;
+  background: linear-gradient(180deg,#0c1a14 0%,#070b12 100%);
+}
+.hero > * { position: relative; z-index: 2; }
+.hero::before {
+  content:''; position:absolute; top:-140px; left:50%; transform:translateX(-50%);
+  width:680px; height:680px; border-radius:50%;
+  background:radial-gradient(circle,rgba(123,216,143,0.10) 0%,transparent 65%); pointer-events:none;
+}
+.hero-icon { font-size: 60px; display: block; margin-bottom: 18px; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+.label-small { font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:4px; text-transform:uppercase; margin-bottom:10px; }
+.hero h1 { font-family:var(--mono); font-size:clamp(26px,5.4vw,48px); font-weight:700; color:#fff; letter-spacing:-1px; margin-bottom:12px; }
+.hero h1 span { color:var(--accent); }
+.hero-sub { font-size:1.08rem; color:#9fb0c4; margin:0 auto 30px; max-width:560px; }
+.badges { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:34px; }
+.badge {
+  font-family:var(--mono); font-size:11px;
+  background:rgba(123,216,143,0.06); border:1px solid rgba(123,216,143,0.3);
+  border-radius:20px; padding:7px 14px; color:var(--accent); white-space:nowrap;
+}
+.hero-cta { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+/* ── BUTTONS ── */
+.btn {
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:13px; font-weight:600;
+  padding:13px 26px; border-radius:8px; text-decoration:none;
+  transition:all .2s; border:none; cursor:pointer;
+}
+.btn-primary { background:var(--accent); color:#04140a; }
+.btn-primary:hover { background:#fff; transform:translateY(-2px); box-shadow:0 8px 24px rgba(123,216,143,0.25); }
+.btn-ghost { background:transparent; color:#c3d0dd; border:1px solid rgba(255,255,255,0.15); }
+.btn-ghost:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+/* ── SECTIONS ── */
+.section { padding:70px 28px; max-width:1200px; margin:0 auto; }
+.section-title { font-family:var(--mono); font-size:10px; color:var(--accent); letter-spacing:4px; text-transform:uppercase; margin-bottom:8px; }
+.section-heading { font-family:var(--mono); font-size:clamp(21px,3.6vw,32px); font-weight:700; color:#fff; margin-bottom:38px; }
+.section-heading span { color:var(--accent); }
+.stripe { height:1px; background:linear-gradient(90deg,transparent,rgba(123,216,143,0.35),transparent); }
+
+/* ── FEATURES ── */
+.features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; }
+.feature-card {
+  background:var(--bg3); border:1px solid var(--border);
+  border-radius:14px; padding:26px 24px; transition:all .2s; position:relative; overflow:hidden;
+}
+.feature-card::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .3s;
+}
+.feature-card:hover { border-color:rgba(123,216,143,0.35); transform:translateY(-3px); }
+.feature-card:hover::after { transform:scaleX(1); }
+.f-icon { font-size:26px; margin-bottom:12px; }
+.feature-card h3 { font-family:var(--mono); font-size:15px; color:#fff; margin-bottom:8px; font-weight:600; }
+.feature-card p { font-size:14px; color:#9fb0c4; }
+
+/* ── GALLERY ── */
+.screenshots-section { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:70px 28px; }
+.screenshots-inner { max-width:1200px; margin:0 auto; }
+.screenshot-group { margin-bottom:44px; }
+.screenshot-group-label { font-family:var(--mono); font-size:12px; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; color:var(--accent); }
+.screenshot-group-note { font-size:13px; color:var(--muted); margin-bottom:18px; max-width:760px; }
+/* align-items:start — without it every tile stretches to the tallest one in its row, and a row
+   that mixes a phone-shaped window with a landscape one ends up mostly empty frame. */
+.screenshot-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; align-items:start; }
+.screenshot-grid.wide { grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); }
+.screenshot-item {
+  background:var(--bg3); border:1px solid var(--border); border-radius:12px;
+  padding:10px; transition:all .2s;
+}
+.screenshot-item:hover { border-color:rgba(123,216,143,0.35); transform:translateY(-3px); }
+.screenshot-item img { width:100%; height:auto; border-radius:7px; display:block; }
+.shot-tag { font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:9px; text-align:center; }
+
+/* ── DOWNLOAD ── */
+.download-section { padding:70px 28px; background:linear-gradient(180deg,#070b12 0%,#0c1a14 100%); }
+.download-inner { max-width:1100px; margin:0 auto; }
+.download-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:20px; align-items:start; }
+.download-card { background:var(--bg3); border:1px solid var(--border); border-radius:16px; padding:30px 26px; }
+.download-card.featured { border-color:rgba(123,216,143,0.4); box-shadow:0 0 36px rgba(123,216,143,0.07); }
+.dc-icon { font-size:30px; margin-bottom:12px; }
+.dc-title { font-family:var(--mono); font-size:18px; font-weight:700; color:#fff; }
+.dc-sub { font-size:13px; color:var(--muted); margin-bottom:14px; }
+.dc-price { font-family:var(--mono); font-size:22px; color:var(--accent); margin-bottom:18px; }
+.dc-price span { font-size:12px; color:var(--muted); }
+.feature-list { list-style:none; margin-bottom:22px; }
+.feature-list li { font-size:13.5px; color:#b6c4d4; padding:5px 0; display:flex; gap:9px; align-items:flex-start; }
+.download-card a:not(.btn) { color:var(--accent); }
+.download-card a:not(.btn):hover { text-decoration:underline; }
+.check { color:var(--accent); flex-shrink:0; }
+.dim { color:#3d4a5a; flex-shrink:0; }
+
+/* ── HASH BOX ── */
+.hashbox {
+  font-family:var(--mono); font-size:11.5px; color:#8fa3ba;
+  background:var(--bg4); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin-top:18px; overflow-x:auto;
+}
+.hashbox b { color:#fff; font-weight:600; }
+.hashbox code { color:var(--accent); word-break:break-all; }
+
+/* ── TABLE ── */
+.cmp { width:100%; border-collapse:collapse; font-size:13.5px; }
+.cmp th, .cmp td { text-align:left; padding:11px 14px; border-bottom:1px solid var(--border); }
+.cmp th { font-family:var(--mono); font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--accent); }
+.cmp td:first-child { color:#fff; }
+.cmp td { color:#9fb0c4; }
+.yes { color:var(--accent); }
+.no  { color:#5b6a7d; }
+
+/* ── LINKS ── */
+.links-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
+.link-card { background:var(--bg3); border:1px solid var(--border); border-radius:12px; padding:20px 22px; text-decoration:none; display:block; transition:all .2s; }
+.link-card:hover { border-color:rgba(123,216,143,0.35); transform:translateY(-3px); }
+.link-card h4 { font-family:var(--mono); font-size:14px; color:#fff; margin-bottom:5px; }
+.link-card p { font-size:13px; color:var(--muted); }
+
+/* ── SUPPORT ── */
+.support-section { background:var(--bg2); border-top:1px solid var(--border); padding:60px 28px; text-align:center; }
+.support-section h2 { font-family:var(--mono); font-size:clamp(19px,3vw,26px); color:#fff; margin-bottom:12px; }
+.support-section p { color:#9fb0c4; max-width:560px; margin:0 auto 26px; }
+.support-section .highlight { color:var(--accent); }
+
+/* ── FOOTER ── */
+footer { padding:44px 28px; text-align:center; border-top:1px solid var(--border); }
+.footer-logo { font-family:var(--mono); font-size:16px; font-weight:700; color:#fff; margin-bottom:6px; }
+.footer-logo span { color:var(--accent); }
+.footer-sub { font-size:13px; color:var(--muted); margin-bottom:18px; }
+.footer-links { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:18px; }
+.footer-links a { font-family:var(--mono); font-size:12px; color:#9fb0c4; text-decoration:none; }
+.footer-links a:hover { color:var(--accent); }
+.footer-copy { font-size:12px; color:#48586a; }
+
+@media (max-width:640px) {
+  .section { padding:52px 20px; }
+  .screenshots-section, .download-section { padding:52px 20px; }
+  .nav-links { gap:12px; }
+}
+pre.cmd { font-family:var(--mono); font-size:12px; color:var(--accent); background:var(--bg4); border:1px solid var(--border);
+  border-radius:10px; padding:14px 16px; margin:10px 0 16px; overflow-x:auto; white-space:pre; }
+.download-card { min-width:0; }
+@media (max-width:640px) { .download-cards { grid-template-columns:minmax(0,1fr); } }
+.fit-img { width:100%; max-width:760px; height:auto; display:block; margin:0 auto; border-radius:7px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">RadioA <span>for Linux</span></div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#screenshots">Gallery</a>
+    <a href="#download">Download</a>
+    <a href="#differences">Compared</a>
+    <a href="details.html">Technical details</a>
+    <a href="https://toevi.github.io/RadioAndroid-Windows/">Windows version</a>
+    <a href="https://toevi.github.io/RadioAndroidPro/">Android version</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="hero-icon">🐧</span>
+  <div class="label-small">Internet Radio for Linux</div>
+  <h1>RadioA <span>for Linux</span></h1>
+  <p class="hero-sub">Your own station list, a 10-band equalizer, the song that is playing with its album cover, and a classic hi-fi look called Vintage. Free, no account, no ads.</p>
+  <div class="badges">
+    <span class="badge">🎚️ 10-band equalizer</span>
+    <span class="badge">🎵 ICY metadata &amp; cover art</span>
+    <span class="badge">🎨 Skins &amp; 5 VU meters</span>
+    <span class="badge">📻 Vintage hi-fi style</span>
+    <span class="badge">⌨️ Keyboard &amp; media keys</span>
+    <span class="badge">🔔 System tray</span>
+    <span class="badge">💾 PLS / JSON playlists</span>
+    <span class="badge">📦 .deb package</span>
+    <span class="badge">🆓 Free</span>
+  </div>
+  <div class="hero-cta">
+    <a href="https://github.com/toevi/RadioA-Linux/releases/latest" class="btn btn-primary" target="_blank">📦 Download the .deb</a>
+    <a href="#screenshots" class="btn btn-ghost">🖼 See it running</a>
+    <a href="details.html" class="btn btn-ghost" style="border-color:rgba(123,216,143,0.35);color:var(--accent);">🔬 Technical details</a>
+  </div>
+</header>
+
+<section class="section" id="features">
+  <div class="section-title">What it is</div>
+  <div class="section-heading">The radio app, <span>at home on the Linux desktop</span></div>
+  <div class="features-grid">
+    <div class="feature-card"><div class="f-icon">🔊</div><h3>One engine, every stream</h3><p>LibVLC plays ICY, MP3, AAC, Ogg and HLS. No second engine to choose, nothing to configure — paste a URL and it plays.</p></div>
+    <div class="feature-card"><div class="f-icon">🖥️</div><h3>Any window size</h3><p>Narrow like a phone or the whole monitor. The player switches to two columns when there is room; the station grid adds columns as you widen it.</p></div>
+    <div class="feature-card"><div class="f-icon">🎵</div><h3>Cover art &amp; live metadata</h3><p>ICY titles are read from the stream, and the cover comes from iTunes, Deezer or AudioAddict. Station logos are cached on disk so the grid stays fast.</p></div>
+    <div class="feature-card"><div class="f-icon">🎚️</div><h3>10-band equalizer</h3><p>60 Hz to 16 kHz, with presets you can save and load. The same EQ files as the Android and Windows versions.</p></div>
+    <div class="feature-card"><div class="f-icon">🎨</div><h3>Skins and VU meters</h3><p>Six colour skins plus your own custom colours, five VU meter styles, and Light / Dark / Auto for the bars. The VU meter measures the sound the app plays, following the volume.</p></div>
+    <div class="feature-card"><div class="f-icon">📻</div><h3>Vintage style</h3><p>The whole app as one piece of hi-fi equipment: a dot-matrix display with status lamps, brushed-metal keys in silver or black, and two needle VU meters that swing with the music.</p></div>
+    <div class="feature-card"><div class="f-icon">🔔</div><h3>Lives in the tray</h3><p>Closing the window keeps the radio playing. Click the tray icon to bring it back; its menu has play/stop, previous, next and exit.</p></div>
+    <div class="feature-card"><div class="f-icon">⌨️</div><h3>Keyboard and media keys</h3><p>Space plays or stops, Ctrl+←/→ change station, Ctrl+1/2/3 switch tabs, F1 opens help. Media keys and the desktop's sound applet work through MPRIS, even when the window is hidden.</p></div>
+    <div class="feature-card"><div class="f-icon">🖱️</div><h3>Mouse where you expect it</h3><p>The wheel over the volume bar changes volume, a double click on the cover plays or stops, and dragging reorders stations.</p></div>
+    <div class="feature-card"><div class="f-icon">💾</div><h3>Your files stay yours</h3><p>Playlists and EQ presets live in <code>Documents/RadioA</code> in the same formats as the other versions — copy them across and they just work. Removing the package never touches them.</p></div>
+    <div class="feature-card"><div class="f-icon">🛡️</div><h3>Reconnect &amp; watchdog</h3><p>A stream that dies is reconnected, also after the computer wakes from sleep; one that goes silent without an error is detected by watching the audio buffers, not just the player state.</p></div>
+    <div class="feature-card"><div class="f-icon">⏱️</div><h3>Sleep timer</h3><p>Set it from the moon in the bar and the countdown replaces the icon. Stopping playback yourself clears the timer.</p></div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<section class="screenshots-section" id="screenshots">
+  <div class="screenshots-inner">
+    <div class="section-title">Gallery</div>
+    <div class="section-heading">Real windows, <span>real streams</span></div>
+    <!-- TO FILL IN: the full gallery, from the Linux screenshots of the Mint session. -->
+    <div class="screenshot-group">
+      <div class="screenshot-group-label">Player styles</div>
+      <p class="screenshot-group-note">Modern, Vintage silver and Vintage black, running on Linux. The needles measure the sound the app plays.</p>
+      <div class="screenshot-item" style="max-width:780px;margin:0 auto;">
+        <img class="fit-img" src="help_styles.png" alt="The player in three styles: Modern with a bar VU meter, Vintage silver and Vintage black with needle VU meters and a dot-matrix display" loading="lazy"/>
+        <p class="shot-tag">Modern · Vintage silver · Vintage black</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="download-section" id="download">
+  <div class="download-inner">
+    <div class="section-title">Get it</div>
+    <div class="section-heading">Download <span>for Linux</span></div>
+    <div class="download-cards">
+
+      <div class="download-card featured">
+        <div class="dc-icon">📦</div>
+        <div class="dc-title">RadioA for Linux</div>
+        <div class="dc-sub">Debian-based systems · amd64 · .deb</div>
+        <div class="dc-price">Free <span>· no account, no ads</span></div>
+        <a href="https://github.com/toevi/RadioA-Linux/releases/latest" class="btn btn-primary" target="_blank">📦 Download from Releases</a>
+        <p style="color:#9fb0c4;font-size:0.92rem;margin:18px 0 0;">Install with apt, which also brings what the app needs from your system's repositories:</p>
+        <pre class="cmd">sudo apt install ./radioa_&lt;version&gt;_amd64.deb</pre>
+        <p style="color:#5b6a7d;font-size:0.85rem;">The Releases page is the only place to get the Linux app. A copy from anywhere else may have been altered. The app does not update itself: new versions appear on the same page.</p>
+      </div>
+
+      <div class="download-card">
+        <div class="dc-icon">🖥️</div>
+        <div class="dc-title">What it needs</div>
+        <div class="dc-sub">Requirements</div>
+        <ul class="feature-list" style="margin-top:14px;">
+          <li><span class="check">✓</span> TO FILL IN: the systems tested before the release</li>
+          <li><span class="check">✓</span> 64-bit x86 processor (amd64)</li>
+          <li><span class="check">✓</span> ~105 MB of disk space, plus VLC's playback library if it is not installed yet</li>
+          <li><span class="check">✓</span> An internet connection for the streams</li>
+          <li><span class="dim">—</span> <span style="color:#5b6a7d">No ARM build, no 32-bit build</span></li>
+          <li><span class="dim">—</span> <span style="color:#5b6a7d">Without a tray on the desktop, closing the window quits the app</span></li>
+        </ul>
+        <p style="color:#5b6a7d;font-size:0.85rem;margin:6px 0 0;">
+          <a href="https://github.com/toevi/RadioA-Linux/blob/master/LICENSE.txt" target="_blank">Licence terms</a> ·
+          <a href="https://github.com/toevi/RadioA-Linux/blob/master/PRIVACY.md" target="_blank">Privacy policy</a> ·
+          <a href="https://github.com/toevi/RadioA-Linux/blob/master/THIRD-PARTY-NOTICES.txt" target="_blank">Third-party licences</a><br/>
+          Found a problem? <a href="https://github.com/toevi/RadioA-Linux/issues/new/choose" target="_blank">Report it on GitHub</a>.
+        </p>
+      </div>
+
+      <div class="download-card">
+        <div class="dc-icon">🔏</div>
+        <div class="dc-title">Check the download</div>
+        <div class="dc-sub">Recommended</div>
+        <p style="color:#9fb0c4;font-size:0.92rem;margin:12px 0 0;">Every release carries <code>SHA256SUMS</code>, its signature and the public key. Compare the key with this fingerprint:</p>
+        <div class="hashbox"><b>tmfgroup &lt;tomek.maselko@gmail.com&gt;</b><br/><code>TO FILL IN: fingerprint, after the key is created</code></div>
+        <pre class="cmd">gpg --import radioa-signing-key.asc
+gpg --show-keys --fingerprint radioa-signing-key.asc
+gpg --verify SHA256SUMS.gpg SHA256SUMS
+sha256sum -c SHA256SUMS --ignore-missing</pre>
+      </div>
+
+      <div class="download-card">
+        <div class="dc-icon">🪟</div>
+        <div class="dc-title">Other versions</div>
+        <div class="dc-sub">Windows and Android</div>
+        <p style="color:#9fb0c4;font-size:0.92rem;margin:12px 0 14px;">Playlists and equalizer presets move between all three versions in both directions.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a href="https://apps.microsoft.com/detail/9NJPCB908XPS" class="btn btn-ghost" target="_blank">🛍 Microsoft Store</a>
+          <a href="https://play.google.com/store/apps/details?id=com.tmfgroup.radioandroid" class="btn btn-ghost" target="_blank">▶ Google Play</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<section class="section" id="differences">
+  <div class="section-title">Honest list</div>
+  <div class="section-heading">What the Linux version <span>does and does not do</span></div>
+  <p style="color:#9fb0c4;max-width:760px;margin-bottom:26px;">
+    Half of the Android app is about the car and the phone — Android Auto, the Bluetooth media session, switching
+    from Wi-Fi to mobile data. None of that has a meaning on a desktop, so none of it is here. What is left is the
+    radio itself, plus the things a Linux desktop expects.
+  </p>
+  <div style="overflow-x:auto;">
+  <table class="cmp">
+    <thead><tr><th>Feature</th><th>Android</th><th>Windows</th><th>Linux</th></tr></thead>
+    <tbody>
+      <tr><td>Internet radio, ICY metadata, cover art</td><td class="yes">yes</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+      <tr><td>10-band equalizer with presets</td><td class="yes">yes</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+      <tr><td>Skins, VU meters, sleep timer</td><td class="yes">yes</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+      <tr><td>PLS / JSON playlists (same file format)</td><td class="yes">yes</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+      <tr><td>HLS (.m3u8) streams</td><td class="yes">ExoPlayer</td><td class="yes">LibVLC</td><td class="yes">LibVLC</td></tr>
+      <tr><td>Keeps playing in the background</td><td class="yes">foreground service</td><td class="yes">system tray</td><td class="yes">system tray</td></tr>
+      <tr><td>Keyboard shortcuts &amp; media keys</td><td class="no">—</td><td class="yes">yes</td><td class="yes">yes (MPRIS)</td></tr>
+      <tr><td>Resizable window, two-column player</td><td class="no">—</td><td class="yes">yes</td><td class="yes">yes</td></tr>
+      <tr><td>Android Auto</td><td class="yes">certified</td><td class="no">not applicable</td><td class="no">not applicable</td></tr>
+      <tr><td>Wi-Fi → mobile data fallback</td><td class="yes">yes</td><td class="no">not applicable</td><td class="no">not applicable</td></tr>
+      <tr><td>Automatic updates</td><td class="yes">Google Play</td><td class="yes">Microsoft Store</td><td class="no">not yet — new .deb by hand</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<div class="support-section">
+  <div style="font-size:34px;margin-bottom:14px;">☕</div>
+  <h2>Support the project</h2>
+  <p>If <span class="highlight">RadioA</span> plays in your room, consider buying the developer a coffee. It is entirely optional and unlocks nothing.</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+    <a href="https://buycoffee.to/toevi" class="btn btn-primary" target="_blank">☕ buycoffee.to</a>
+    <a href="https://buymeacoffee.com/toevi" class="btn btn-primary" target="_blank">☕ buymeacoffee.com</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">RadioA <span>for Linux</span></div>
+  <div class="footer-sub">Internet radio for Linux · .deb package</div>
+  <div class="footer-links">
+    <a href="https://toevi.github.io/RadioAndroid-Windows/" target="_blank">Windows version</a>
+    <a href="https://toevi.github.io/RadioAndroidPro/" target="_blank">Android version</a>
+    <a href="mailto:tomek.maselko@gmail.com">Email</a>
+    <a href="https://github.com/toevi/RadioA-Linux/blob/master/PRIVACY.md" target="_blank">Privacy Policy</a>
+    <a href="https://github.com/toevi/RadioA-Linux/issues" target="_blank">Report a problem</a>
+    <a href="details.html">🔬 Technical details</a>
+  </div>
+  <div class="footer-copy">© 2026 Tomasz Masłowski · VLC, LibVLC and VideoLAN are trademarks of the VideoLAN organisation · Linux is a registered trademark of Linus Torvalds</div>
+</footer>
+
+</body>
+</html>
