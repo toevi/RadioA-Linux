@@ -1,6 +1,6 @@
 RadioA for Linux - END USER LICENSE AGREEMENT
 
-Version: 1.0 DRAFT (2026-11-02) - not yet approved
+Version: 1.0 (2026-11-02)
 Licensor: Tomasz Masłowski (toevi), contact: tomek.maselko@gmail.com
 
 PLEASE READ THIS AGREEMENT CAREFULLY. By installing or using the Software you accept it.
