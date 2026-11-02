@@ -1,6 +1,6 @@
 # Privacy Policy – RadioA for Linux
 
-**Last updated:** DRAFT, 2 November 2026
+**Last updated:** 2 November 2026
 
 This policy covers **RadioA for Linux**, distributed as a `.deb` package from
 <https://github.com/toevi/RadioA-Linux/releases>, and lives on the app's page:
