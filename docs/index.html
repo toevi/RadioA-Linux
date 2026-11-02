@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>RadioA for Linux — Internet Radio for the Desktop</title>
-<meta name="description" content="RadioA for Linux — internet radio for Debian-based systems: LibVLC engine, 10-band equalizer, ICY metadata and cover art, MPRIS media keys and a tray icon. Free .deb package, amd64."/>
+<meta name="description" content="RadioA for Linux — internet radio: LibVLC engine, 10-band equalizer, ICY metadata and cover art, MPRIS media keys and a tray icon. Free .deb package, amd64."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
 <style>
@@ -252,13 +252,38 @@ pre.cmd { font-family:var(--mono); font-size:12px; color:var(--accent); backgrou
   <div class="screenshots-inner">
     <div class="section-title">Gallery</div>
     <div class="section-heading">Real windows, <span>real streams</span></div>
-    <!-- TO FILL IN: the full gallery, from the Linux screenshots of the Mint session. -->
     <div class="screenshot-group">
-      <div class="screenshot-group-label">Player styles</div>
-      <p class="screenshot-group-note">Modern, Vintage silver and Vintage black, running on Linux. The needles measure the sound the app plays.</p>
-      <div class="screenshot-item" style="max-width:780px;margin:0 auto;">
-        <img class="fit-img" src="help_styles.png" alt="The player in three styles: Modern with a bar VU meter, Vintage silver and Vintage black with needle VU meters and a dot-matrix display" loading="lazy"/>
-        <p class="shot-tag">Modern · Vintage silver · Vintage black</p>
+      <div class="screenshot-group-label">One window, any size</div>
+      <p class="screenshot-group-note">The same app at phone width, at half a screen and across a wide window. The layout reflows.</p>
+      <div class="screenshot-grid wide">
+        <div class="screenshot-item"><img src="10-player-szerokie.png" alt="Player in a wide window: cover on the left, VU meter, station card and controls on the right" loading="lazy"/><p class="shot-tag">Wide window — the player splits into two columns</p></div>
+        <div class="screenshot-item"><img src="04-stacje-max.png" alt="Station grid in a wide window, six tiles per row" loading="lazy"/><p class="shot-tag">Wide window — the station grid adds columns</p></div>
+      </div>
+      <div class="screenshot-grid" style="margin-top:16px;">
+        <div class="screenshot-item"><img src="09-player-gra.png" alt="Player at phone width: cover with a bar VU meter, station card and transport keys" loading="lazy"/><p class="shot-tag">Phone width</p></div>
+        <div class="screenshot-item"><img src="02-stacje-waskie.png" alt="Station list at phone width, two tiles per row" loading="lazy"/><p class="shot-tag">Phone width — station list</p></div>
+        <div class="screenshot-item"><img src="03-stacje-pol.png" alt="Station list in a half-screen window, three tiles per row" loading="lazy"/><p class="shot-tag">Half screen</p></div>
+        <div class="screenshot-item"><img src="07-pls-cwiartka.png" alt="Playlist tab: save, load, open folder, clear and the PLS reconstructor" loading="lazy"/><p class="shot-tag">Playlists</p></div>
+      </div>
+    </div>
+    <div class="screenshot-group">
+      <div class="screenshot-group-label">Vintage style</div>
+      <p class="screenshot-group-note">The same player as one piece of hi-fi equipment — the needles measure the sound the app plays.</p>
+      <div class="screenshot-grid wide">
+        <div class="screenshot-item"><img src="17-vintage-szerokie.png" alt="Vintage style in black across a wide window: cover, needle VU meters, dot-matrix display and metal keys" loading="lazy"/><p class="shot-tag">Vintage · black, wide window</p></div>
+      </div>
+      <div class="screenshot-grid" style="margin-top:16px;">
+        <div class="screenshot-item"><img src="14-vintage-silver.png" alt="Vintage style in brushed silver with two needle VU meters and a dot-matrix display" loading="lazy"/><p class="shot-tag">Vintage · silver</p></div>
+        <div class="screenshot-item"><img src="15-vintage-black.png" alt="Vintage style in black with needle VU meters and a dot-matrix display" loading="lazy"/><p class="shot-tag">Vintage · black</p></div>
+        <div class="screenshot-item"><img src="16-vintage-stacje.png" alt="Station grid in the Vintage style with dot-matrix names" loading="lazy"/><p class="shot-tag">Vintage · station list</p></div>
+      </div>
+    </div>
+    <div class="screenshot-group">
+      <div class="screenshot-group-label">Equalizer and settings</div>
+      <p class="screenshot-group-note">Everything has a button — nothing is hidden behind a gesture you have to guess.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;">
+        <div class="screenshot-item" style="flex:1 1 380px;max-width:620px;"><img src="05-eq-pol.png" alt="Ten-band equalizer from 60 Hz to 16 kHz with save, load, reset and link keys" loading="lazy"/><p class="shot-tag">10-band equalizer with presets</p></div>
+        <div class="screenshot-item" style="flex:0 1 270px;"><img src="06-ustawienia.png" alt="Settings panel: play on start, start with the system, VU meter, app theme and player style" loading="lazy"/><p class="shot-tag">Settings</p></div>
       </div>
     </div>
   </div>
@@ -273,7 +298,7 @@ pre.cmd { font-family:var(--mono); font-size:12px; color:var(--accent); backgrou
       <div class="download-card featured">
         <div class="dc-icon">📦</div>
         <div class="dc-title">RadioA for Linux</div>
-        <div class="dc-sub">Debian-based systems · amd64 · .deb</div>
+        <div class="dc-sub">amd64 · .deb package</div>
         <div class="dc-price">Free <span>· no account, no ads</span></div>
         <a href="https://github.com/toevi/RadioA-Linux/releases/latest" class="btn btn-primary" target="_blank">📦 Download from Releases</a>
         <p style="color:#9fb0c4;font-size:0.92rem;margin:18px 0 0;">Install with apt, which also brings what the app needs from your system's repositories:</p>
@@ -286,7 +311,7 @@ pre.cmd { font-family:var(--mono); font-size:12px; color:var(--accent); backgrou
         <div class="dc-title">What it needs</div>
         <div class="dc-sub">Requirements</div>
         <ul class="feature-list" style="margin-top:14px;">
-          <li><span class="check">✓</span> TO FILL IN: the systems tested before the release</li>
+          <li><span class="check">✓</span> Tested on Linux Mint 22.3 (Cinnamon, X11). Other Debian-based systems may work but are not tested yet</li>
           <li><span class="check">✓</span> 64-bit x86 processor (amd64)</li>
           <li><span class="check">✓</span> ~105 MB of disk space, plus VLC's playback library if it is not installed yet</li>
           <li><span class="check">✓</span> An internet connection for the streams</li>

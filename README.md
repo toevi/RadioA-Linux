@@ -1,6 +1,6 @@
 # RadioA for Linux
 
-Internet radio for Linux, packaged for Debian-based systems. Your own station list, a 10-band equalizer, the
+Internet radio for Linux, packaged as a `.deb`. Your own station list, a 10-band equalizer, the
 song that is playing with its album cover, skins, a VU meter that measures the real sound, and a classic hi-fi
 look called **Vintage**. Free, no account, no ads.
 
@@ -10,7 +10,7 @@ Download from **[Releases](../../releases/latest)**. A copy from anywhere else m
 
 Website: <https://toevi.github.io/RadioA-Linux/>
 
-Tested on: [TO FILL IN: the systems tested before the release, e.g. Linux Mint 22 Cinnamon]. 64-bit (amd64) only.
+Tested on Linux Mint 22.3 (Cinnamon, X11). Other Debian-based systems may work but are not tested yet. 64-bit (amd64) only.
 
 ### Install
 
@@ -50,7 +50,14 @@ nothing: anyone could make one under this name.
 ## Screenshots
 
 <p align="center">
-  <img src="docs/help_styles.png" alt="The player in three styles: Modern, Vintage silver and Vintage black" width="760">
+  <img src="docs/17-vintage-szerokie.png" alt="Vintage player style in black across a wide window" width="820">
+</p>
+
+<p align="center">
+  <img src="docs/15-vintage-black.png" alt="Vintage player, black" width="200">
+  <img src="docs/14-vintage-silver.png" alt="Vintage player, silver" width="200">
+  <img src="docs/09-player-gra.png" alt="Modern player at phone width with a bar VU meter" width="200">
+  <img src="docs/16-vintage-stacje.png" alt="Station grid in the Vintage style" width="200">
 </p>
 
 More on the website: <https://toevi.github.io/RadioA-Linux/#screenshots>
