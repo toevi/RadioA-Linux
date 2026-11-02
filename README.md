@@ -76,6 +76,11 @@ from the system tray.
 **Stations are yours to add.** On first start the list holds a few examples (SomaFM and France Musique)
 so there is something to play straight away. The app hosts no streams of its own.
 
+Everything technical — how the engine, the reconnect and the equalizer work, how the three apps differ and
+which bugs each one had — is in the project's README: <https://github.com/toevi/RadioAndroidPro#readme>. The Linux edition uses the same engine
+(libvlc) and the same playlist and equalizer file formats; it leaves out what only makes sense on a phone (Android Auto,
+Bluetooth remote control). RadioA for Windows has its own page: <https://toevi.github.io/RadioAndroid-Windows/>.
+
 > **This repository is the app's home page, its documents and its releases — there is no source code here.**
 
 ## Licence and privacy
