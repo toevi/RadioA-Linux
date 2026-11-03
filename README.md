@@ -1,6 +1,6 @@
 # RadioA for Linux
 
-Internet radio for Linux, packaged as a `.deb`. Your own station list, a 10-band equalizer, the
+Internet radio for Linux, packaged as a `.deb` — the Linux port of RadioAndroid (same C# codebase, same LibVLC engine). Your own station list, a 10-band equalizer, the
 song that is playing with its album cover, skins, a VU meter that measures the real sound, and a classic hi-fi
 look called **Vintage**. Free, no account, no ads.
 
