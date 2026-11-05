@@ -12,7 +12,7 @@ look called **Vintage**. Free, no account, no ads.
 | **Windows 11** (x64) — RadioA for Windows | [![Get it from the Microsoft Store](https://img.shields.io/badge/Microsoft_Store-get_it-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)](https://apps.microsoft.com/detail/9NJPCB908XPS) |
 | **Android** (phone, tablet, Android Auto) | [![Get it on Google Play](https://img.shields.io/badge/Google_Play-get_it-34A853?style=for-the-badge&logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.tmfgroup.radioandroid) |
 
-The Linux app is distributed **only through this project's Releases page**. A copy from anywhere else may have been altered.
+The Linux app is distributed **only through this project's Releases page and its APT repository**. A copy from anywhere else may have been altered.
 
 Website: <https://toevi.github.io/RadioA-Linux/>
 
@@ -26,6 +26,18 @@ sudo apt install ./radioa_<version>_amd64.deb
 
 Use `apt` rather than `dpkg -i`: apt also installs what the app needs (VLC's playback library from your system's
 repositories, and `pulseaudio-utils` for the VU meter).
+
+### Updates
+
+Installing the package also adds this project's APT repository to your system: the source
+`/etc/apt/sources.list.d/radioa.list` and the signing key `/usr/share/keyrings/radioa-archive-keyring.gpg`. New versions then
+appear in your Update Manager and in `apt upgrade` like any other package, and apt checks their signature. They
+install without asking only if you have turned on automatic updates on your system.
+
+- The first install is always the `.deb`. Versions 0.1.2 and older have no source: download a newer `.deb` once.
+- To turn this off and keep the app, delete the source: `sudo rm /etc/apt/sources.list.d/radioa.list`. Later upgrades do not bring
+  it back.
+- Uninstalling the app removes the source and the key.
 
 ### Check the download (recommended)
 

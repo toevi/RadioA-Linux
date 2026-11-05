@@ -1,9 +1,10 @@
 # Privacy Policy – RadioA for Linux
 
-**Last updated:** 2 November 2026
+**Last updated:** 5 November 2026
 
 This policy covers **RadioA for Linux**, distributed as a `.deb` package from
-<https://github.com/toevi/RadioA-Linux/releases>, and lives on the app's page:
+<https://github.com/toevi/RadioA-Linux/releases> and through the project's APT repository
+(<https://toevi.github.io/RadioA-Linux/apt>), and lives on the app's page:
 <https://toevi.github.io/RadioA-Linux/>.
 The Windows and Android apps have their own policies, on their own pages.
 
@@ -30,7 +31,7 @@ Everything the app saves stays on your computer and is never uploaded anywhere:
 
 The first three folders keep an earlier technical name of the app.
 
-**Uninstalling** the package removes the program only. As with every Debian package, the files in your home
+**Uninstalling** the package removes the program and the software source described in section 4. As with every Debian package, the files in your home
 folder stay, so a reinstall finds your stations again. Delete the folders above yourself if you want nothing
 left behind.
 
@@ -58,6 +59,12 @@ logo and station-title lookups, `RadioAndroid/<version> (Linux)` for cover looku
 `RadioAndroid/1.0 (Linux)` for image downloads. The e-mail address is the developer's contact address
 from section 8. This description is the same for everyone and carries nothing that identifies you.
 
+**Updates.** The app itself does not check for updates. The package adds the project's APT repository to
+your system (section 4), so your system's package manager (`apt`), not the app, connects to `toevi.github.io`
+when it checks for updates, on its own schedule or when you run it, to read the package list and to download
+new versions. These are the standard requests it makes to every repository you have. GitHub, which hosts the
+site, can see your IP address, and its privacy policy applies. Nothing about you is sent to the developer.
+
 The app opens web pages in your own browser **only when you click a link**: the project page, the two
 donation pages on the coffee page (`buycoffee.to`, `buymeacoffee.com` — voluntary, they unlock nothing in
 the app) and the station directory `fmstream.org`. What happens there is covered by those sites' own policies.
@@ -76,7 +83,9 @@ the app) and the station directory `fmstream.org`. What happens there is covered
   to the window, so that a copied stream address lands in the address field. It keeps nothing else and sends
   nothing anywhere.
 - **Sleep and wake.** The app listens for the system's sleep and wake signal (logind) to reconnect the station.
-- **Installation.** Installing needs administrator rights (`sudo apt install`), as for any package. The app itself
+- **Installation.** Installing needs administrator rights (`sudo apt install`), as for any package. The package
+  adds one software source, `/etc/apt/sources.list.d/radioa.list`, and its signing key, `/usr/share/keyrings/radioa-archive-keyring.gpg`, so that
+  updates reach you through your system; uninstalling removes them. The app itself
   runs as your user and installs no service. It does not start with the system unless you turn on
   **Start with the system** in Settings. It does not access your location, contacts, camera or microphone, or
   files outside the folders listed in section 2 and the files you open yourself.

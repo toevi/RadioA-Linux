@@ -256,7 +256,7 @@ footer { padding:40px 28px; text-align:center; }
   <div class="sec-title">A <em>.deb</em> you can check yourself</div>
   <p class="sec-desc">
     .NET 10 and the interface libraries travel inside the package, so there is no runtime to fetch or match. LibVLC comes
-    from your system. The Releases page of this project is the only place to get it.
+    from your system. The Releases page of this project and its APT repository are the only places to get it.
   </p>
   <div class="cards">
     <div class="card">
@@ -268,12 +268,12 @@ footer { padding:40px 28px; text-align:center; }
     <div class="card">
       <div class="c-icon">🧹</div>
       <h4>Removing it leaves your files</h4>
-      <p>As with every Debian package, <code>apt remove</code> takes the program and leaves your home folder alone: stations, settings, playlists and presets are still there after a reinstall. Delete them yourself for a clean start.</p>
+      <p>As with every Debian package, <code>apt remove</code> takes the program and the project's APT source and leaves your home folder alone: stations, settings, playlists and presets are still there after a reinstall. Delete them yourself for a clean start.</p>
     </div>
     <div class="card">
       <div class="c-icon">🚫</div>
       <h4>No background service</h4>
-      <p>Nothing runs at login unless you switch on <em>Start with the system</em>, which writes one entry in <code>~/.config/autostart</code>, and nothing phones home. The app does not update itself.</p>
+      <p>Nothing runs at login unless you switch on <em>Start with the system</em>, which writes one entry in <code>~/.config/autostart</code>, and nothing phones home. The app does not update itself: your system's package manager does, through the APT source the package adds.</p>
     </div>
   </div>
 </section>
@@ -325,7 +325,7 @@ footer { padding:40px 28px; text-align:center; }
     <div class="pc-table">
       <div class="pc-head con"><span>⚠️</span> Limitations</div>
       <div class="pc-row"><span class="mark">🧪</span><div class="txt"><strong>A young version</strong><small>Expect rough edges, and please report them on GitHub</small></div></div>
-      <div class="pc-row"><span class="mark">🔄</span><div class="txt"><strong>No automatic updates yet</strong><small>New versions are a new .deb from the Releases page, no apt repository so far</small></div></div>
+      <div class="pc-row"><span class="mark">🔄</span><div class="txt"><strong>The first install is by hand</strong><small>One .deb from the Releases page; after that, new versions come through apt</small></div></div>
       <div class="pc-row"><span class="mark">💻</span><div class="txt"><strong>amd64 and .deb only</strong><small>No ARM or 32-bit build, no Flatpak, Snap or RPM</small></div></div>
       <div class="pc-row"><span class="mark">🔍</span><div class="txt"><strong>No built-in station catalogue</strong><small>Six example stations to start with; the rest you add yourself, import from a playlist or find through fmstream.org in your browser</small></div></div>
       <div class="pc-row"><span class="mark">☁️</span><div class="txt"><strong>No cloud sync</strong><small>Playlists live on the machine; moving them is a file copy</small></div></div>
@@ -354,7 +354,7 @@ footer { padding:40px 28px; text-align:center; }
           <tr><td>Mouse: wheel volume, drag to reorder</td><td>—</td><td>yes</td><td>yes</td></tr>
           <tr><td>Android Auto</td><td>certified</td><td>not applicable</td><td>not applicable</td></tr>
           <tr><td>Wi-Fi → mobile data fallback</td><td>yes</td><td>not applicable</td><td>not applicable</td></tr>
-          <tr><td>Distribution</td><td>Google Play</td><td>Microsoft Store</td><td>.deb from GitHub Releases</td></tr>
+          <tr><td>Distribution</td><td>Google Play</td><td>Microsoft Store</td><td>.deb from GitHub Releases, then apt</td></tr>
         </tbody>
       </table>
     </div>

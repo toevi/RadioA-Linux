@@ -1,6 +1,6 @@
 RadioA for Linux - END USER LICENSE AGREEMENT
 
-Version: 1.0 (2026-11-02)
+Version: 1.1 (2026-11-05)
 Licensor: Tomasz Masłowski (toevi), contact: tomek.maselko@gmail.com
 
 PLEASE READ THIS AGREEMENT CAREFULLY. By installing or using the Software you accept it.
@@ -25,8 +25,9 @@ use on computers you own or control.
 
 Except where section 6 or mandatory law allows it, you may not:
   a) sell the Software, or charge any fee for it or for access to it; distribute,
-     publish, rent or lend it; the only authorised source is the Releases page of
-     https://github.com/toevi/RadioA-Linux, linked from the project page
+     publish, rent or lend it; the only authorised sources are the Releases page of
+     https://github.com/toevi/RadioA-Linux and the project's APT repository
+     (https://toevi.github.io/RadioA-Linux/apt), both linked from the project page
      (https://toevi.github.io/RadioA-Linux/);
   b) modify, decompile or reverse engineer the Software, or create derivative works;
   c) remove or alter copyright, license or attribution notices.
@@ -81,9 +82,13 @@ Privacy Policy: https://github.com/toevi/RadioA-Linux/blob/master/PRIVACY.md
 
 8. UPDATES
 
-The Software does not update itself. New versions are published on the Releases page named
-in section 3. A new version may come with a new version of this agreement, which then
-applies to that version.
+The Software contains no update mechanism of its own. Installing the package adds the
+project's APT repository and its signing key to your system's software sources, so new
+versions reach you through your system's package manager, and install without asking only
+if you have turned on automatic updates there. Uninstalling the package removes that source
+and key; the project page explains how to remove them while keeping the Software. New
+versions are published in the two places named in section 3. A new version may come with a
+new version of this agreement, which then applies to that version.
 
 
 9. NO WARRANTY

@@ -1,0 +1,46 @@
+# Builds the public site from docs/ plus the APT repository from the latest release's files, so the
+# packages stay out of git history (each one would add 36 MB for good).
+name: Pages
+
+on:
+  push:
+    branches: [master]
+    paths: ["docs/**", ".github/workflows/pages.yml", ".github/pages/**"]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # A release run starts on its tag; the site always comes from master.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: master
+      - name: Download the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir dl
+          gh release download --repo "$GITHUB_REPOSITORY" --dir dl \
+            --pattern 'radioa_*_amd64.deb' --pattern 'radioa-apt-dists.tar.gz' --pattern 'radioa-signing-key.asc'
+      - name: Assemble the site and the APT repository
+        run: bash .github/pages/build-site.sh dl _site
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

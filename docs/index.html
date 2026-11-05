@@ -348,7 +348,7 @@ pre.cmd { font-family:var(--mono); font-size:12px; color:var(--accent); backgrou
         <a href="https://github.com/toevi/RadioA-Linux/releases/latest" class="btn btn-primary" target="_blank">📦 Download from Releases</a>
         <p style="color:#9fb0c4;font-size:0.92rem;margin:18px 0 0;">Install with apt, which also brings what the app needs from your system's repositories:</p>
         <pre class="cmd">sudo apt install ./radioa_&lt;version&gt;_amd64.deb</pre>
-        <p style="color:#5b6a7d;font-size:0.85rem;">The Releases page is the only place to get the Linux app. A copy from anywhere else may have been altered. The app does not update itself: new versions appear on the same page.</p>
+        <p style="color:#5b6a7d;font-size:0.85rem;">The Releases page and the project's APT repository are the only places to get the Linux app. A copy from anywhere else may have been altered. Installing also adds that repository and its signing key to your system, so new versions appear in your Update Manager; they install without asking only if you have turned on automatic updates. To turn this off and keep the app: <code>sudo rm /etc/apt/sources.list.d/radioa.list</code>. Uninstalling removes both. Versions 0.1.2 and older need one more download by hand.</p>
       </div>
 
       <div class="download-card">
@@ -422,7 +422,7 @@ sha256sum -c SHA256SUMS --ignore-missing</pre>
       <tr><td>Resizable window, two-column player</td><td class="no">—</td><td class="yes">yes</td><td class="yes">yes</td></tr>
       <tr><td>Android Auto</td><td class="yes">certified</td><td class="no">not applicable</td><td class="no">not applicable</td></tr>
       <tr><td>Wi-Fi → mobile data fallback</td><td class="yes">yes</td><td class="no">not applicable</td><td class="no">not applicable</td></tr>
-      <tr><td>Automatic updates</td><td class="yes">Google Play</td><td class="yes">Microsoft Store</td><td class="no">not yet — new .deb by hand</td></tr>
+      <tr><td>Automatic updates</td><td class="yes">Google Play</td><td class="yes">Microsoft Store</td><td class="yes">apt, in your Update Manager</td></tr>
     </tbody>
   </table>
   </div>
