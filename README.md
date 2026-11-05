@@ -20,7 +20,8 @@ Tested on Linux Mint 22.3 (Cinnamon, X11). Other Debian-based systems may work b
 
 ### Install
 
-In a terminal, in the folder with the downloaded file:
+On Linux Mint, double-click the downloaded file and follow the installer. Or in a terminal, in the folder with the
+downloaded file:
 
 ```sh
 sudo apt install ./radioa_*_amd64.deb
