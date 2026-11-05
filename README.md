@@ -20,11 +20,13 @@ Tested on Linux Mint 22.3 (Cinnamon, X11). Other Debian-based systems may work b
 
 ### Install
 
+In a terminal, in the folder with the downloaded file:
+
 ```sh
-sudo apt install ./radioa_<version>_amd64.deb
+sudo apt install ./radioa_*_amd64.deb
 ```
 
-Use `apt` rather than `dpkg -i`: apt also installs what the app needs (VLC's playback library from your system's
+If that folder holds more than one version, write the full file name instead. Use `apt` rather than `dpkg -i`: apt also installs what the app needs (VLC's playback library from your system's
 repositories, and `pulseaudio-utils` for the VU meter).
 
 ### Updates
