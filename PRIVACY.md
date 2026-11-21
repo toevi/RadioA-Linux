@@ -1,6 +1,6 @@
 # Privacy Policy – RadioA for Linux
 
-**Last updated:** 5 November 2026
+**Last updated:** 21 November 2026
 
 This policy covers **RadioA for Linux**, distributed as a `.deb` package from
 <https://github.com/toevi/RadioA-Linux/releases> and through the project's APT repository
@@ -23,9 +23,9 @@ Everything the app saves stays on your computer and is never uploaded anywhere:
 
 | What | Where |
 |---|---|
-| Your settings: equalizer, skins, VU meter mode, theme, window and list preferences | `~/.config/radioandroid` |
+| Your settings: equalizer, skins, VU meter mode, theme, window and list preferences, and your last search in Find Stations (name, country, genre) | `~/.config/radioandroid` |
 | Your station list (name and stream address of each station, favourites) | `~/.local/share/radioandroid` |
-| Cached cover art and station logos, and a list of logo addresses already looked up | `~/.cache/radioandroid` |
+| Cached cover art and station logos, a list of logo addresses already looked up, and the station directory's lists of countries and genres for Find Stations | `~/.cache/radioandroid` |
 | Playlists and equalizer presets you save, so you can copy or share them yourself | `Documents/RadioA/PLS`, `EQ` (your own documents folder, under the name your system uses for it) |
 | The startup entry, **only if you turn on Start with the system** | `~/.config/autostart/radioa.desktop` |
 
@@ -45,7 +45,7 @@ personal data is sent in any of these requests.
 | The radio station's own server (the stream address of the station) | While a station is playing, and when you save a station (the address is checked) | A standard media stream request. A second, short request to the same address reads the "now playing" title the station broadcasts. |
 | Apple iTunes Search API (`itunes.apple.com`) | When the station reports the currently playing track | The artist and title of that track, to look up the album cover. |
 | Deezer API (`api.deezer.com`) | Fallback, when iTunes has no match for the track | The artist and title of that track. |
-| radio-browser.info | When a station on your list has no logo yet | The station name, to look up its logo. |
+| radio-browser.info | When you search for stations (Find Stations), when a station on your list has no logo yet, and when you add a station found there | The words you typed in the search (name, country, genre), or a station's name to look up its logo. After you add a station found there, an anonymous "this station was chosen" count for that station in the directory, which orders its search results. |
 | AudioAddict / RadioTunes API (`api.audioaddict.com`) | When looking up a station logo; the list is downloaded once and kept in the cache | Nothing but the request for the public channel list. |
 | The server that holds a logo or cover image (for example the station's website, Wikimedia, Apple's or Deezer's image servers, `cdn-images.audioaddict.com`) | When a logo or cover found above is downloaded for the first time | A request for that image. It is then kept in the cache (section 2). |
 
@@ -55,7 +55,8 @@ their own privacy policies apply to what they do with the requests they receive.
 
 Some services require every client to name itself, so the requests carry a fixed description of the
 app (it still uses the project's technical name, RadioAndroid): `RadioAndroid/6 (tomek.maselko@gmail.com)` for
-logo and station-title lookups, `RadioAndroid/<version> (Linux)` for cover lookups and
+logo and station-title lookups, `RadioAndroid/<version> (Linux)` for cover lookups,
+`RadioAndroid/<version> (Linux; +https://toevi.github.io/RadioA-Linux/)` for the station search, and
 `RadioAndroid/1.0 (Linux)` for image downloads. The e-mail address is the developer's contact address
 from section 8. This description is the same for everyone and carries nothing that identifies you.
 
