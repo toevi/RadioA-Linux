@@ -89,7 +89,9 @@ from the system tray.
 - Playlists (PLS) and equalizer presets are file-compatible with the Android and Windows apps, both ways.
 
 **Stations are yours to add.** On first start the list holds a few examples (SomaFM and France Musique)
-so there is something to play straight away. The app hosts no streams of its own.
+so there is something to play straight away. The app hosts no streams of its own. **Find Stations** in the
+station editor searches the free Radio Browser directory by name, country and genre; play a result before
+you add it.
 
 Everything technical — how the engine, the reconnect and the equalizer work, how the three apps differ and
 which bugs each one had — is in the project's README: <https://github.com/toevi/RadioAndroidPro#readme>. The Linux edition uses the same engine
